@@ -1,6 +1,6 @@
 import Header from "./Header"
 import '../css/Login.css'
-import { Link, useNavigate } from "react-router-dom"
+import { Link} from "react-router-dom"
 import {useRef, useState } from "react"
 import { valiDataform } from '../utills/valiDateform.'
 import { auth } from "../utills/firebase"
@@ -14,7 +14,6 @@ const Login = () => {
 
     const email = useRef(null)
     const password = useRef(null)
-    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const HandleSignin = () => {
@@ -24,6 +23,7 @@ const Login = () => {
   
 
     const formDatasubmit = () => {
+        console.log("email value",email.current.value);
         const checkerrorMessage = valiDataform(auth, email.current.value, password.current.value)
         setErrorMessage(checkerrorMessage)
 
@@ -46,7 +46,6 @@ const Login = () => {
                         // An error occurred
                         // ...
                     });
-                    navigate("/browse")
                     // ...
                 })
                 .catch((error) => {
@@ -62,7 +61,6 @@ const Login = () => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log(user)
-                    navigate("/browse")
                     // ...
                 })
                 .catch(() => {

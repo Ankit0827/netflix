@@ -1,14 +1,18 @@
-export const valiDataform=(email,password)=>{
+export const valiDataform = (auth,email, password) => {
 
-// const isemailValid=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
+    const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
-// const ispasswordValid=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/.test(password)
+    const isemailValid = emailRegex.test(email);
 
-// if(!isemailValid)  return "*Email is not valid"
+    console.log("validation", isemailValid , email);
 
-// if(!ispasswordValid) return "*Inavalid password"
+    const ispasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/.test(password)
 
-// return null;
+    if (!isemailValid) return "*Email is not valid"
 
-  
+    if (!ispasswordValid) return "*Inavalid password"
+
+    return null;
+
+
 }

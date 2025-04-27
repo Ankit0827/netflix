@@ -85,6 +85,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -created a redux store with user slice
 -Implemented Signout functionality
 -Updated profile after signup
+-bug fix- if user is not loged in it will not able to navigate to the browse page
+-bug fix- if user logrd in then it will not redirect to login page
+-unsbscribe of onauthChange when component unmount
 -fetch movies form TMDB api
 
 

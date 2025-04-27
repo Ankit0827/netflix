@@ -25,19 +25,21 @@ const Header=()=>{
   }
 
   useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
+  const unsubscribe=  onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         const {uid,email,displayName,photoURL} = user;
         dispatch(addUser({uid:uid, emai:email ,displayName:displayName,photoURL:photoURL}))
-        navigate("/browser")
+        navigate("/browse")
       } else {
         // User is signed out
         dispatch(removeUser())
         navigate("/")
       }
     });
-  })
+// unsubscribe when component is unmounted
+    return()=>unsubscribe()
+  },[])
     return(
         <div className='flex items-center justify-between pr-2 bg-gradient-to-b from-black'>
           <img src={Netflixlogo} alt='netflix-logo' className='w-36 p-2 '/>
